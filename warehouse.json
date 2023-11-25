@@ -1,0 +1,14 @@
+{
+  "Rower": {
+    "price": 300,
+    "amount": 3
+  },
+  "Deska": {
+    "price": 100,
+    "amount": 10
+  },
+  "Deska ": {
+    "price": 100,
+    "amount": 4
+  }
+}
