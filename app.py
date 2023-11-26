@@ -162,11 +162,21 @@ def index():
     return render_template("index.html", amount_in_account=amount_in_account)
 
 
-@app.route("/historia/")
+@app.route("/historia/", methods=["GET", "POST"])
 def history():
     # Odczytanie danych z plików
     operation_history = read_operation_history()
-    return render_template("history.html", operation_history=operation_history)
+
+    # Określenie początkowego i końcowego indeksu odczytu historii
+    start = request.form.get("start_operation")
+    end = request.form.get("end_operation")
+    if start and end:
+        start = int(start)
+        end = int(end) + 1
+    else:
+        start = 0
+        end = len(operation_history)
+    return render_template("history.html", operation_history=operation_history, start=start, end=end)
 
 
 @app.route("/stan/")

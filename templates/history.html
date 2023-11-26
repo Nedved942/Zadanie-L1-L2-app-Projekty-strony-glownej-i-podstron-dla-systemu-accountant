@@ -9,10 +9,25 @@
 <body>
     <h2 class="text-center">Program księgowo-magazynowy</h2>
     <br>
-    <p class="fs-3">Historia operacji:</p>
 
+    <form class="w-25" action="{{ url_for("history") }}" method="POST">
+        <div class="mb-2">
+            <label class="form-label fs-5">Początkowa operacja</label>
+            <input type="number" class="form-control" name="start_operation">
+            <div class="form-text">Podaj początkowy indeks z historii operacji.</div>
+        </div>
+        <div class="mb-2">
+            <label class="form-label fs-5">Końcowa operacja</label>
+            <input type="number" class="form-control" name="end_operation">
+            <div class="form-text">Podaj końcowy indeks z historii operacji.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Wyślij</button>
+    </form>
+
+    <br>
+    <p class="fs-3">Historia operacji:</p>
     <div class="fs-6">
-    {% for operation in operation_history %}
+    {% for operation in operation_history[start:end] %}
         {{ loop.index }}. {{ operation["Nazwa operacji"] }}<br>
         Data operacji: {{ operation["Data operacji"] }}<br>
         {{ operation["Opis operacji"] }}<br><br>
