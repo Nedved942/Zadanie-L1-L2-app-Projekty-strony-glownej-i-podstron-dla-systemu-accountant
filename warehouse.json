@@ -1,14 +1,1 @@
-{
-  "Rower": {
-    "price": 300,
-    "amount": 3
-  },
-  "Deska": {
-    "price": 100,
-    "amount": 10
-  },
-  "Deska ": {
-    "price": 100,
-    "amount": 4
-  }
-}
+{"Rower": {"price": 400, "amount": 8}, "Deska": {"price": 80, "amount": 6}, "Namiot": {"price": 1200, "amount": 1}}
