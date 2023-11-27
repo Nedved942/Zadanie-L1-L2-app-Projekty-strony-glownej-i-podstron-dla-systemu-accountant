@@ -8,11 +8,13 @@
 </head>
 <body>
     <h2 class="text-center">Program księgowo-magazynowy</h2>
-
+    <a href="{{ url_for('index') }}" class="fs-6">Strona główna</a>
+    <a href="{{ url_for('store') }}" class="fs-6">Stan magazynu</a>
+    <a href="{{ url_for('history') }}" class="fs-6">Historia</a>
     <br>
     <p class="fs-3">Stan konta: {{ amount_in_account }}</p>
 
-    <form class="w-25" action="{{ url_for("index") }}" method="POST">
+    <form class="w-25" action="{{ url_for('index') }}" method="POST">
         <div class="mb-3">
             <label class="form-label fs-4">Zmień saldo:</label>
             <input type="number" class="form-control" name="difference_in_account">
@@ -24,7 +26,7 @@
     <br>
     <br>
 
-    <form class="w-25" action="{{ url_for("index") }}" method="POST">
+    <form class="w-25" action="{{ url_for('index') }}" method="POST">
         <p class="fs-4 mb-2">Dokonaj zakupu:</p>
         <div class="mb-3">
             <label class="form-label">Nazwa produktu:</label>
@@ -47,7 +49,7 @@
     <br>
     <br>
 
-    <form class="w-25" action="{{ url_for("index") }}" method="POST">
+    <form class="w-25" action="{{ url_for('index') }}" method="POST">
         <p class="fs-4 mb-2">Dokonaj sprzedaży:</p>
         <div class="mb-3">
             <label class="form-label">Nazwa produktu:</label>

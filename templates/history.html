@@ -8,9 +8,11 @@
 </head>
 <body>
     <h2 class="text-center">Program księgowo-magazynowy</h2>
+    <a href="{{ url_for('index') }}" class="fs-6">Strona główna</a>
+    <a href="{{ url_for('store') }}" class="fs-6">Stan magazynu</a>
+    <a href="{{ url_for('history') }}" class="fs-6">Historia</a>
     <br>
-
-    <form class="w-25" action="{{ url_for("history") }}" method="POST">
+    <form class="w-25" action="{{ url_for('history') }}" method="POST">
         <div class="mb-2">
             <label class="form-label fs-5">Początkowa operacja</label>
             <input type="number" class="form-control" name="start_operation">
