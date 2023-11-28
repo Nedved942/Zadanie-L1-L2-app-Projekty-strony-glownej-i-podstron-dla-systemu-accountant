@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 from datetime import datetime
 from json import dumps, loads
 from json.decoder import JSONDecodeError
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = "Tajny klucz"
 
 
 def give_operation_date():
@@ -76,6 +77,9 @@ def index():
                                       ),
                                   "Data operacji": give_operation_date()})
 
+        # Dodanie komunikatu - Saldo
+        flash("Zmieniono stan konta!")
+
     # Zakup produktu
     product_to_buy_name = request.form.get("product_to_buy_name")
     product_to_buy_price = request.form.get("product_to_buy_price")
@@ -109,6 +113,9 @@ def index():
                                           f"Stan konta po operacji: {amount_in_account}"
                                       ),
                                   "Data operacji": give_operation_date()})
+
+        # Dodanie komunikatu - Zakup
+        flash("Dokonano wpisu zakupu!")
 
     # Sprzedaż produktu
     product_to_sell_name = request.form.get("product_to_sell_name")
@@ -147,6 +154,9 @@ def index():
                                           f"Stan konta po operacji: {amount_in_account}"
                                       ),
                                   "Data operacji": give_operation_date()})
+
+        # Dodanie komunikatu - Sprzedaż
+        flash("Dokonano wpisu sprzedaży!")
 
     # Zapisanie danych do plików
     with open("data_amount_in_account.txt", "w") as file_stream:
