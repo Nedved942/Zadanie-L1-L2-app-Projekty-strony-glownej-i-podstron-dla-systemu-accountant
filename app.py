@@ -71,7 +71,7 @@ def index():
         operation_history.append({"Nazwa operacji": "Saldo",
                                   "Opis operacji":
                                       (
-                                          f"Kwota operacji: {difference_in_account}\n"
+                                          f"Kwota operacji: {difference_in_account}",
                                           f"Stan konta po operacji: {amount_in_account}"
                                       ),
                                   "Data operacji": give_operation_date()})
@@ -103,9 +103,9 @@ def index():
         operation_history.append({"Nazwa operacji": "Zakup",
                                   "Opis operacji":
                                       (
-                                          f"Nazwa zakupionego produktu: {product_to_buy_name}\n"
-                                          f"Kwota zakupu za jeden produkt: {product_to_buy_price}\n"
-                                          f"Ilość zakupionych produktów: {product_to_buy_amount}\n"
+                                          f"Nazwa zakupionego produktu: {product_to_buy_name}",
+                                          f"Kwota zakupu za jeden produkt: {product_to_buy_price}",
+                                          f"Ilość zakupionych produktów: {product_to_buy_amount}",
                                           f"Stan konta po operacji: {amount_in_account}"
                                       ),
                                   "Data operacji": give_operation_date()})
@@ -141,9 +141,9 @@ def index():
         operation_history.append({"Nazwa operacji": "Sprzedaż",
                                   "Opis operacji":
                                       (
-                                          f"Nazwa sprzedanego produktu: {product_to_sell_name}\n"
-                                          f"Kwota sprzedaży za jeden produkt: {product_to_sell_price}\n"
-                                          f"Ilość sprzedanych produktów: {product_to_sell_amount}\n"
+                                          f"Nazwa sprzedanego produktu: {product_to_sell_name}",
+                                          f"Kwota sprzedaży za jeden produkt: {product_to_sell_price}",
+                                          f"Ilość sprzedanych produktów: {product_to_sell_amount}",
                                           f"Stan konta po operacji: {amount_in_account}"
                                       ),
                                   "Data operacji": give_operation_date()})
@@ -176,6 +176,7 @@ def history():
     else:
         start = 0
         end = len(operation_history)
+
     return render_template("history.html", operation_history=operation_history, start=start, end=end)
 
 

@@ -24,7 +24,11 @@
     {% for operation in operation_history[start:end] %}
         {{ loop.index }}. {{ operation["Nazwa operacji"] }}<br>
         Data operacji: {{ operation["Data operacji"] }}<br>
-        {{ operation["Opis operacji"] }}<br><br>
+        {% for operation_description in operation["Opis operacji"] %}
+            {{ operation_description }}
+            <br>
+        {% endfor %}
+        <br><br>
     {% endfor %}
     </div>
 
