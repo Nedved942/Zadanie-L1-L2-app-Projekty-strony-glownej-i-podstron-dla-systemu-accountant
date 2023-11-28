@@ -62,6 +62,7 @@ def index():
     operation_history = read_operation_history()
 
     # Dodanie lub odjęcie wartości od kwoty na koncie
+    # Pobranie danych wejściowych
     difference_in_account = request.form.get("difference_in_account")
 
     if difference_in_account:
@@ -81,6 +82,7 @@ def index():
         flash("Zmieniono stan konta!")
 
     # Zakup produktu
+    # Pobranie danych wejściowych
     product_to_buy_name = request.form.get("product_to_buy_name")
     product_to_buy_price = request.form.get("product_to_buy_price")
     product_to_buy_amount = request.form.get("product_to_buy_amount")
@@ -118,6 +120,7 @@ def index():
         flash("Dokonano wpisu zakupu!")
 
     # Sprzedaż produktu
+    # Pobranie danych wejściowych
     product_to_sell_name = request.form.get("product_to_sell_name")
     product_to_sell_price = request.form.get("product_to_sell_price")
     product_to_sell_amount = request.form.get("product_to_sell_amount")
@@ -125,6 +128,11 @@ def index():
     if product_to_sell_name and product_to_sell_price and product_to_sell_amount:
         product_to_sell_price = int(product_to_sell_price)
         product_to_sell_amount = int(product_to_sell_amount)
+        if product_to_sell_name not in warehouse:
+            flash("Podanego produktu nie ma w spisie magazynowym!")
+            return render_template("index.html", amount_in_account=amount_in_account)
+        if product_to_sell_amount >= warehouse[product_to_sell_name]["amount"]:
+            flash("Sprzedano całą ilość danego produktu.")
 
         # Odjęcie z magazynu sprzedawanej ilości towaru
         warehouse[product_to_sell_name]["amount"] = \
